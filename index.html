@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анна и Михаил — 12 июня 2027</title>
+<meta name="description" content="Приглашаем вас на нашу свадьбу 12 июня 2027 года. Ответьте, пожалуйста, до 1 мая.">
+
+<!-- Open Graph: мессенджеры не выполняют JavaScript, поэтому эти строки правятся вручную.
+     В og:image и og:url нужны полные адреса (с https://) после публикации сайта. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Анна и Михаил — приглашение на свадьбу">
+<meta property="og:description" content="12 июня 2027, усадьба «Берёзовая роща». Ответьте, пожалуйста, до 1 мая.">
+<meta property="og:image" content="https://tastyllllllllll.github.io/wedding/images/og-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tastyllllllllll.github.io/wedding/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#F2F4EE; --card:#FBFCF8; --ink:#26302B; --soft:#5C6660;
+  --leaf:#4F6F52; --deep:#1E3A33; --lilac:#8D7AAE; --line:rgba(38,48,43,.16);
+  --error:#A63A2E;
+  --display:"Forum",Georgia,"Times New Roman",serif;
+  --text:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--leaf)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0}
+h2{font-size:clamp(2.1rem,8vw,3.2rem);margin-bottom:1.25rem}
+h3{font-size:1.45rem}
+p{margin:0 0 1em}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px}
+
+.block{padding:4.5rem 1.25rem}
+.inner{max-width:680px;margin:0 auto}
+.inner.wide{max-width:1040px}
+.muted{color:var(--soft)}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:.7rem 1.5rem;
+  border:1px solid var(--deep);border-radius:999px;background:var(--deep);color:#fff;font:500 1rem var(--text);
+  text-decoration:none;cursor:pointer;transition:background .2s,transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.light{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}
+.btn.light:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn:hover{background:var(--leaf);border-color:var(--leaf)}
+.btn.ghost{background:transparent;color:var(--deep)}
+.btn.ghost:hover{background:rgba(30,58,51,.08)}
+.btn[disabled]{opacity:.55;cursor:default}
+
+/* 1. Обложка */
+.cover{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.5rem 1.25rem 3rem;background:var(--deep);color:#fff;overflow:hidden}
+.cover .cover-photo{position:absolute;inset:0;z-index:0;will-change:transform}
+.cover-photo img{width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,34,30,.25) 0%,rgba(20,34,30,.1) 35%,rgba(20,34,30,.82) 100%)}
+.cover > *:not(img){position:relative;z-index:1}
+.names{font-size:clamp(4rem,21vw,10.5rem);line-height:.86;letter-spacing:-.01em}
+.names > span{display:block}
+.names .and{font-size:.38em;line-height:1.5;padding-left:.15em;opacity:.85}
+.names .second{text-align:right}
+.cover-date{margin-top:1.75rem;font-size:1.15rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.4);padding-top:1rem}
+.music{position:absolute!important;top:1rem;right:1rem;min-height:44px;padding:.45rem 1rem;border-radius:999px;
+  border:1px solid rgba(255,255,255,.6);background:rgba(20,34,30,.45);color:#fff;font:500 .9rem var(--text);cursor:pointer;backdrop-filter:blur(6px)}
+
+/* 2. Приглашение */
+.invite p{font-size:1.15rem}
+.sign{font-family:var(--display);font-size:1.6rem;margin-top:1.5rem}
+
+/* 3. Таймер */
+.timer-block{background:var(--deep);color:#fff;text-align:center}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;max-width:560px;margin:0 auto}
+.timer b{display:block;font:400 clamp(2.6rem,13vw,5rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.timer span{font-size:.9rem;opacity:.8}
+
+/* 4. Программа */
+.program{list-style:none;margin:0;padding:0;position:relative}
+.program::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line);transform-origin:top}
+.program li{position:relative;padding:0 0 2rem 1.5rem}
+.program li:last-child{padding-bottom:0}
+.program li::before{content:"";position:absolute;left:-4px;top:.55rem;width:9px;height:9px;border-radius:50%;background:var(--lilac)}
+.program time{font:400 1.7rem/1 var(--display);color:var(--leaf);display:block;margin-bottom:.25rem}
+.program p{margin:.25rem 0 0;color:var(--soft)}
+
+/* 5. Место */
+.map{width:100%;aspect-ratio:4/3;border:0;border-radius:14px;background:#dfe4da;margin:1.25rem 0}
+.facts{display:grid;gap:1.25rem;margin-top:1.75rem}
+.facts h3{margin-bottom:.35rem}
+.facts p{margin:0;color:var(--soft)}
+
+/* 6. Дресс-код */
+.swatches{display:flex;flex-wrap:wrap;gap:1rem 1.25rem;list-style:none;padding:0;margin:1.5rem 0 0}
+.swatches li{display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.85rem;color:var(--soft);width:64px;text-align:center}
+.swatches i{width:56px;height:56px;border-radius:50%;border:1px solid var(--line)}
+
+/* 7. Анкета */
+.rsvp-block{background:var(--card);border-block:1px solid var(--line)}
+form .field{margin-bottom:1.4rem}
+label,legend{font-weight:500;display:block;margin-bottom:.4rem;padding:0}
+fieldset{border:0;padding:0;margin:0 0 1.4rem;min-width:0}
+input[type=text],input[type=number],select,textarea{width:100%;min-height:48px;padding:.65rem .85rem;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink);font:400 1rem var(--text)}
+textarea{min-height:96px;resize:vertical}
+[aria-invalid=true]{border-color:var(--error)!important}
+.choices{display:flex;flex-wrap:wrap;gap:.5rem}
+.choices label{position:relative;margin:0;font-weight:400}
+.choices input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.choices span{display:inline-flex;align-items:center;min-height:46px;padding:.5rem 1.1rem;border:1px solid var(--line);border-radius:999px;background:#fff}
+.choices input:checked + span{background:var(--deep);border-color:var(--deep);color:#fff}
+.choices input:focus-visible + span{outline:3px solid var(--lilac);outline-offset:2px}
+.err{color:var(--error);font-size:.9rem;margin-top:.35rem;min-height:0}
+.status{margin-top:1rem;padding:1rem 1.1rem;border-radius:10px;display:none}
+.status.ok{display:flex;align-items:center;gap:.7rem;background:#E3ECDF;color:var(--deep);font-weight:500}
+.status.bad{display:block;background:#F6E3DF;color:var(--error)}
+[hidden]{display:none!important}
+
+/* 8. Вишлист */
+.gifts{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:1.5rem}
+.gift{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.gift .pic{aspect-ratio:4/3;background:#dfe4da}
+.gift .pic img{width:100%;height:100%;object-fit:cover}
+.gift .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.gift .price{color:var(--soft)}
+.gift .actions{margin-top:auto;padding-top:.5rem;display:grid;gap:.6rem}
+.gift{transition:opacity .6s}
+.gift .pic{transition:filter .6s}
+.gift.taken{opacity:.6}
+.gift.taken .pic{filter:grayscale(1)}
+.gift .taken-note{font-weight:500;color:var(--soft)}
+.ph{width:100%;height:100%;min-height:120px;display:flex;align-items:center;justify-content:center;padding:1rem;text-align:center;
+  font-size:.85rem;color:var(--soft);background:repeating-linear-gradient(135deg,#e3e8de 0 12px,#dbe1d5 12px 24px);word-break:break-all}
+
+/* 9. Пожелания */
+.wishes{display:grid;gap:1.75rem}
+.wishes h3{margin-bottom:.35rem}
+.wishes p{margin:0;color:var(--soft)}
+
+/* 10. Контакты */
+.contacts .phone{font:400 clamp(1.8rem,8vw,2.6rem)/1.2 var(--display);color:var(--ink);text-decoration:none;display:inline-block;margin:.25rem 0 1.5rem}
+
+/* 11. Финал */
+.final{background:var(--deep);color:#fff;text-align:center;padding-bottom:5rem}
+.final h2{font-size:clamp(3.2rem,15vw,7rem);margin-bottom:2rem}
+.final .photo{max-width:420px;margin:0 auto 2rem;aspect-ratio:3/4;border-radius:210px 210px 14px 14px;overflow:hidden;background:#2b4a42}
+.final .photo img{width:100%;height:100%;object-fit:cover}
+.final p{font-size:1.15rem;max-width:30em;margin-inline:auto}
+
+/* Календарь */
+.cal-month{font:400 1.7rem/1 var(--display);margin:0 0 1rem}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);max-width:320px;margin:0 auto 3.5rem;font-variant-numeric:tabular-nums}
+.cal span{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.cal .wd{font-size:.8rem;opacity:.55}
+.cal .day{opacity:.7}
+.cal .the{opacity:1;font:400 1.5rem/1 var(--display)}
+.cal svg{position:absolute;inset:-14%;width:128%;height:128%;fill:none;stroke:#C9BCE2;stroke-width:3;stroke-linecap:round;overflow:visible}
+
+/* Веточка */
+.twig{display:block;width:200px;margin-top:2rem;fill:none;stroke:var(--leaf);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.twig.light{stroke:#C9BCE2;margin:0 auto 1.5rem}
+
+/* Формы тёмных блоков: мягкий переход между секциями */
+.timer-block{border-radius:50%/44px}
+.final{border-radius:50% 50% 0 0/44px 44px 0 0}
+
+/* Полоса прогресса и плавающая кнопка */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;background:var(--lilac);transform:scaleX(0);transform-origin:left}
+.fab{min-height:44px;padding:.5rem 1.2rem;font-size:.95rem;border-color:rgba(255,255,255,.4);position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 8px 24px rgba(30,58,51,.28);
+  visibility:hidden;transform:translateY(160%);transition:transform .5s cubic-bezier(.2,.7,.2,1),visibility 0s .5s,background .2s}
+.fab.show{visibility:visible;transform:none;transition:transform .5s cubic-bezier(.2,.7,.2,1),background .2s}
+
+/* Подсказка «листайте» на обложке */
+.scroll-hint{position:absolute!important;left:50%;bottom:.6rem;width:1px;height:26px;background:rgba(255,255,255,.7);transform-origin:top}
+
+/* Галочка после отправки, раскрытие полей */
+.check{width:28px;height:28px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.check path{stroke-dasharray:1;animation:draw .6s ease .15s backwards}
+.status.ok,.status.bad,#ifComing:not([hidden]),#companionsField:not([hidden]),.gift .actions > *{animation:unfold .45s ease}
+
+/* ---------- Анимации (работают только при включённом JS) ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes riseTitle{from{opacity:0;transform:translateY(.5em);clip-path:inset(0 -5% 100% -5%)}to{clip-path:inset(-20% -5% -20% -5%)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-18px)}}
+@keyframes pop{from{opacity:0;transform:scale(.5)}}
+@keyframes growY{from{transform:scaleY(0)}}
+@keyframes draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
+@keyframes unfold{from{opacity:0;transform:translateY(-10px)}}
+@keyframes chIn{from{opacity:0;transform:translateY(.45em) rotate(5deg)}}
+@keyframes coverZoom{from{transform:scale(1.14)}}
+@keyframes tick{from{opacity:.25;transform:translateY(-.18em)}}
+@keyframes hint{0%{transform:scaleY(0)}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* Обложка: одна связная сцена при загрузке */
+.js .cover-photo img{animation:coverZoom 2.6s cubic-bezier(.2,.7,.2,1) backwards}
+.names .ch{display:inline-block;animation:chIn .9s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(.3s + var(--i)*60ms)}
+.js .cover-date,.js .music{animation:rise 1s ease 1.3s backwards}
+.js .scroll-hint{animation:hint 2.2s ease-in-out 2.2s infinite backwards}
+.timer b.tick{animation:tick .35s ease}
+
+/* Секции: элементы выходят по очереди, заголовок — из-под маски */
+.js .reveal:not(.in) > *,
+.js .reveal:not(.in) :is(.program li,.swatches li,.wishes > div,.facts > div){opacity:0}
+.js .reveal.in > *{animation:rise .85s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--n,0)*110ms)}
+.js .reveal.in > h2{animation-name:riseTitle;animation-duration:1.1s}
+.js .reveal.in .program li{animation:slideIn .7s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(.35s + var(--i,0)*150ms)}
+.js .reveal.in .swatches li{animation:pop .55s cubic-bezier(.3,1.4,.5,1) backwards;animation-delay:calc(.35s + var(--i,0)*110ms)}
+.js .reveal.in :is(.wishes > div,.facts > div){animation:rise .8s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(.3s + var(--i,0)*140ms)}
+.js .reveal:not(.in) .program::before{transform:scaleY(0)}
+.js .reveal.in .program::before{animation:growY 1.8s ease .2s backwards}
+.js .reveal:not(.in) .draw path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .reveal.in .draw path{animation:draw 1.3s ease backwards;animation-delay:calc(.6s + var(--i,0)*.14s)}
+
+/* Тёмные блоки раздвигаются на всю ширину, когда до них доходят */
+.js .timer-block,.js .final{transform:scaleX(.9);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.js .timer-block.seen,.js .final.seen{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;transition-delay:0s!important}
+  .scroll-hint{display:none}
+}
+
+/* Планшет */
+@media (min-width:700px){
+  body{font-size:18px}
+  .block{padding:6.5rem 2rem}
+  .cover{padding:2rem 2.5rem 4rem}
+  .gifts{grid-template-columns:repeat(2,1fr)}
+  .facts,.wishes{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .wishes{grid-template-columns:repeat(3,1fr)}
+  .map{aspect-ratio:16/9}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+}
+/* Компьютер */
+@media (min-width:1040px){
+  .cover{padding:2.5rem 5rem 5rem}
+  .names{max-width:1100px;width:100%;margin:0 auto}
+  .cover-date{max-width:1100px;width:100%;margin-inline:auto}
+  .gifts{grid-template-columns:repeat(3,1fr)}
+  .program{display:grid;grid-template-columns:1fr 1fr;column-gap:3rem}
+  .program::before{display:none}
+  .program li{border-left:1px solid var(--line)}
+  .program li:last-child{padding-bottom:2rem}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- 1. Обложка -->
+<header class="cover">
+  <div class="cover-photo" id="coverPhoto"><img id="coverImg" alt="" fetchpriority="high"></div>
+  <button class="music" id="musicBtn" type="button" aria-pressed="false">♪ Включить музыку</button>
+  <h1 class="names">
+    <span data-t="couple.first"></span>
+    <span class="and" data-t="couple.and"></span>
+    <span class="second" data-t="couple.second"></span>
+  </h1>
+  <div class="cover-date"><span data-t="dateText"></span><span data-t="venue.name"></span></div>
+  <span class="scroll-hint" aria-hidden="true"></span>
+</header>
+<audio id="music" preload="none" loop></audio>
+
+<main>
+<!-- 2. Приглашение -->
+<section class="block invite"><div class="inner reveal">
+  <h2 data-t="invitation.title"></h2>
+  <div id="inviteText"></div>
+  <p class="sign" data-t="invitation.sign"></p>
+  <svg class="twig draw" viewBox="0 0 240 60" aria-hidden="true">
+    <path pathLength="1" style="--i:0" d="M8 42 C60 22 130 50 232 20"/>
+    <path pathLength="1" style="--i:1" d="M52 33 q4 -15 19 -17 q-2 13 -19 17"/>
+    <path pathLength="1" style="--i:2" d="M88 36 q9 11 23 8 q-7 -10 -23 -8"/>
+    <path pathLength="1" style="--i:3" d="M124 37 q3 -15 18 -18 q-1 13 -18 18"/>
+    <path pathLength="1" style="--i:4" d="M160 34 q9 10 23 6 q-8 -9 -23 -6"/>
+    <path pathLength="1" style="--i:5" d="M196 28 q2 -14 16 -18 q0 12 -16 18"/>
+  </svg>
+</div></section>
+
+<!-- 3. Таймер -->
+<section class="block timer-block"><div class="inner reveal">
+  <p class="cal-month" id="calMonth"></p>
+  <div class="cal" id="calendar" role="img"></div>
+  <h2 data-t="timer.title"></h2>
+  <div class="timer" id="timer" role="timer" aria-live="off">
+    <div><b id="tD">0</b><span>дней</span></div>
+    <div><b id="tH">0</b><span>часов</span></div>
+    <div><b id="tM">0</b><span>минут</span></div>
+    <div><b id="tS">0</b><span>секунд</span></div>
+  </div>
+  <p id="timerDone" hidden data-t="timer.done"></p>
+  <p style="margin:2.5rem 0 0"><button class="btn light" id="icsBtn" type="button">Добавить в календарь</button></p>
+</div></section>
+
+<!-- 4. Программа -->
+<section class="block"><div class="inner wide reveal">
+  <h2 data-t="program.title"></h2>
+  <ol class="program" id="program"></ol>
+</div></section>
+
+<!-- 5. Место -->
+<section class="block" style="padding-top:0"><div class="inner wide reveal">
+  <h2 data-t="venue.title"></h2>
+  <p><strong data-t="venue.name"></strong><br><span data-t="venue.address"></span></p>
+  <iframe class="map" id="map" loading="lazy" title="Карта: как добраться" allowfullscreen></iframe>
+  <a class="btn" id="routeBtn" target="_blank" rel="noopener">Построить маршрут</a>
+  <div class="facts">
+    <div><h3>Парковка</h3><p data-t="venue.parking"></p></div>
+    <div><h3>Трансфер</h3><p data-t="venue.transfer"></p></div>
+  </div>
+</div></section>
+
+<!-- 6. Дресс-код -->
+<section class="block" style="padding-top:0"><div class="inner reveal">
+  <h2 data-t="dresscode.title"></h2>
+  <p data-t="dresscode.text"></p>
+  <ul class="swatches" id="swatches"></ul>
+</div></section>
+
+<!-- 7. Анкета -->
+<section class="block rsvp-block" id="rsvp"><div class="inner reveal">
+  <h2 data-t="rsvp.title"></h2>
+  <p class="muted"><span data-t="rsvp.lead"></span> <strong data-t="rsvpDeadline"></strong>.</p>
+
+  <form id="rsvpForm" novalidate>
+    <div class="field">
+      <label for="fName">Имя и фамилия</label>
+      <input type="text" id="fName" name="name" autocomplete="name" required>
+      <div class="err" id="eName" role="alert"></div>
+    </div>
+
+    <fieldset id="fsAttending">
+      <legend>Вы придёте?</legend>
+      <div class="choices">
+        <label><input type="radio" name="attending" value="Да"><span>Да, приду</span></label>
+        <label><input type="radio" name="attending" value="Нет"><span>Не смогу</span></label>
+      </div>
+      <div class="err" id="eAttending" role="alert"></div>
+    </fieldset>
+
+    <div id="ifComing" hidden>
+      <div class="row">
+        <div class="field">
+          <label for="fGuests">Сколько вас будет, считая вас</label>
+          <input type="number" id="fGuests" name="guests" min="1" max="6" value="1" inputmode="numeric">
+          <div class="err" id="eGuests" role="alert"></div>
+        </div>
+        <div class="field" id="companionsField" hidden>
+          <label for="fCompanions">Имена спутников</label>
+          <input type="text" id="fCompanions" name="companions">
+          <div class="err" id="eCompanions" role="alert"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="fMain">Горячее</label>
+        <select id="fMain" name="main"><option value="">Выберите блюдо</option></select>
+        <div class="err" id="eMain" role="alert"></div>
+      </div>
+
+      <fieldset>
+        <legend>Что будете пить</legend>
+        <div class="choices" id="drinks"></div>
+      </fieldset>
+
+      <div class="field">
+        <label for="fAllergies">Аллергии и ограничения в еде</label>
+        <input type="text" id="fAllergies" name="allergies" placeholder="Если нет — оставьте пустым">
+      </div>
+
+      <fieldset id="fsTransfer">
+        <legend>Нужен трансфер?</legend>
+        <div class="choices">
+          <label><input type="radio" name="transfer" value="Да"><span>Да</span></label>
+          <label><input type="radio" name="transfer" value="Нет"><span>Нет, доберусь сам</span></label>
+        </div>
+        <div class="err" id="eTransfer" role="alert"></div>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <label for="fComment">Комментарий</label>
+      <textarea id="fComment" name="comment"></textarea>
+    </div>
+
+    <button class="btn" type="submit" id="rsvpSubmit">Отправить ответ</button>
+    <div class="status" id="rsvpStatus" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+
+<!-- 8. Вишлист -->
+<section class="block"><div class="inner wide reveal">
+  <h2 data-t="wishlist.title"></h2>
+  <p class="muted" data-t="wishlist.lead" style="max-width:38em"></p>
+  <div class="status" id="giftsStatus" role="status" aria-live="polite"></div>
+  <div class="gifts" id="gifts"></div>
+</div></section>
+
+<!-- 9. Пожелания -->
+<section class="block" style="padding-top:0"><div class="inner wide reveal">
+  <h2 data-t="wishes.title"></h2>
+  <div class="wishes" id="wishes"></div>
+</div></section>
+
+<!-- 10. Контакты -->
+<section class="block contacts" style="padding-top:0"><div class="inner reveal">
+  <h2 data-t="contacts.title"></h2>
+  <p class="muted" style="margin-bottom:0"><span data-t="contacts.lead"></span> <span data-t="contacts.organizerName"></span></p>
+  <a class="phone" id="phone"></a><br>
+  <a class="btn ghost" id="tg" target="_blank" rel="noopener">Чат гостей в Telegram</a>
+</div></section>
+</main>
+
+<!-- 11. Финал -->
+<footer class="block final"><div class="inner reveal">
+  <svg class="twig draw light" viewBox="0 0 240 60" aria-hidden="true">
+    <path pathLength="1" style="--i:0" d="M8 42 C60 22 130 50 232 20"/>
+    <path pathLength="1" style="--i:1" d="M52 33 q4 -15 19 -17 q-2 13 -19 17"/>
+    <path pathLength="1" style="--i:2" d="M88 36 q9 11 23 8 q-7 -10 -23 -8"/>
+    <path pathLength="1" style="--i:3" d="M124 37 q3 -15 18 -18 q-1 13 -18 18"/>
+    <path pathLength="1" style="--i:4" d="M160 34 q9 10 23 6 q-8 -9 -23 -6"/>
+    <path pathLength="1" style="--i:5" d="M196 28 q2 -14 16 -18 q0 12 -16 18"/>
+  </svg>
+  <h2 data-t="final.title"></h2>
+  <div class="photo"><img id="coupleImg" loading="lazy" alt="Фото пары"></div>
+  <p><span data-t="final.reminder"></span> <strong data-t="rsvpDeadline"></strong>.</p>
+  <a class="btn" href="#rsvp" style="background:#fff;color:var(--deep);border-color:#fff">Заполнить анкету</a>
+</footer>
+
+<a class="fab btn" id="fab" href="#rsvp">Ответить на приглашение</a>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ============================================================
+   URL веб-приложения Google Apps Script. Вставьте его между кавычками.
+   Пока строка пустая, сайт работает в демо-режиме: показывает
+   примеры подарков из CONFIG.demoGifts и ничего не отправляет.
+   ============================================================ */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwAynQ3pmpRC0zD1SnO7AzV6vSJ_4VyWw5SjjqMRsuISdbzKEefmrCzYvDMOz_SJX_l/exec';
+
+/* ============================================================
+   ВСЕ ТЕКСТЫ И ДАННЫЕ ПАРЫ. Чтобы переделать сайт под другую
+   пару, правьте только этот объект (и теги Open Graph в <head>).
+   ============================================================ */
+const CONFIG = {
+  couple: { first: 'Анна', and: 'и', second: 'Михаил' },
+
+  date: '2027-06-12T16:00:00+03:00',      // дата и время для таймера (+03:00 — Москва)
+  dateText: '12 июня 2027, 16:00',
+  rsvpDeadline: 'до 1 мая',
+
+  photos: {
+    cover: 'images/cover.jpg',             // обложка, вертикальное или горизонтальное фото
+    couple: 'images/couple.jpg'            // фото в финале, вертикальное 3:4
+  },
+  music: 'audio/music.mp3',
+
+  invitation: {
+    title: 'Дорогие родные и друзья',
+    text: [
+      'Мы женимся — и очень хотим, чтобы в этот день вы были рядом.',
+      'Приезжайте разделить с нами церемонию, ужин и танцы до темноты. Ниже всё, что нужно знать, и короткая анкета.'
+    ],
+    sign: 'Аня и Миша'
+  },
+
+  timer: { title: 'До свадьбы осталось', done: 'Этот день настал. До встречи!' },
+
+  program: {
+    title: 'Программа дня',
+    items: [
+      { time: '15:30', title: 'Сбор гостей', text: 'Лимонад, закуски и живая музыка на веранде.' },
+      { time: '16:00', title: 'Церемония', text: 'В берёзовой аллее. Продлится около получаса.' },
+      { time: '17:00', title: 'Ужин', text: 'Тосты, поздравления и первый танец.' },
+      { time: '20:00', title: 'Торт', text: 'И кофе для тех, кому ещё танцевать.' },
+      { time: '23:00', title: 'Завершение вечера', text: 'Автобус в город отправляется в 23:15.' }
+    ]
+  },
+
+  venue: {
+    title: 'Место',
+    name: 'Усадьба «Берёзовая роща»',
+    address: 'Московская область, деревня Лесная, ул. Садовая, 1',
+    lat: 55.7000, lon: 37.2000,            // координаты площадки для карты и маршрута
+    parking: 'Бесплатная охраняемая парковка у главных ворот, мест хватит всем.',
+    transfer: 'Автобус от метро «Крылатское» в 14:30, обратно — в 23:15. Отметьте в анкете, если поедете с нами.'
+  },
+
+  dresscode: {
+    title: 'Дресс-код',
+    text: 'Будем рады нарядам в спокойных летних оттенках. Вечер пройдёт на газоне, поэтому удобная обувь важнее каблуков.',
+    colors: [
+      { name: 'Шалфей', hex: '#A9B8A0' },
+      { name: 'Сирень', hex: '#B5A6CC' },
+      { name: 'Небо', hex: '#A8BFD1' },
+      { name: 'Песок', hex: '#D9CDB8' },
+      { name: 'Графит', hex: '#4A4F4C' }
+    ]
+  },
+
+  rsvp: {
+    title: 'Анкета гостя',
+    lead: 'Заполните, пожалуйста, даже если не сможете приехать. Ждём ответ',
+    mains: ['Утиная грудка с ягодным соусом', 'Сибас на гриле', 'Овощи на гриле с булгуром (без мяса)'],
+    drinks: ['Игристое', 'Белое вино', 'Красное вино', 'Крепкое', 'Безалкогольное']
+  },
+
+  wishlist: {
+    title: 'Вишлист',
+    lead: 'Если захотите подарить что-то из списка, забронируйте подарок, чтобы он не повторился. Ваше имя увидим только мы.'
+  },
+  // Показываются только пока SCRIPT_URL пустой. Потом список берётся с листа «Подарки».
+  demoGifts: [
+    { id: 1, title: 'Кофемашина', price: 32000, link: 'https://example.com/', photo: 'images/gift-1.jpg', taken: false },
+    { id: 2, title: 'Набор бокалов', price: 6500, link: 'https://example.com/', photo: 'images/gift-2.jpg', taken: true },
+    { id: 3, title: 'Плед из шерсти', price: 9800, link: 'https://example.com/', photo: 'images/gift-3.jpg', taken: false }
+  ],
+
+  wishes: {
+    title: 'Пожелания',
+    items: [
+      { title: 'Цветы', text: 'Букеты не успеют нас порадовать — на следующий день мы улетаем. Вместо цветов можно принести бутылку вина для нашей домашней коллекции.' },
+      { title: 'Дети', text: 'Мы любим ваших детей, но праздник задуман для взрослых. Надеемся, вы сможете оставить малышей с близкими и отдохнуть.' },
+      { title: 'Подарки', text: 'Если ничего из вишлиста не подошло, лучшим подарком будет вклад в наше путешествие — в конверте.' }
+    ]
+  },
+
+  contacts: {
+    title: 'Контакты',
+    lead: 'По любым вопросам в день свадьбы и до него звоните организатору:',
+    organizerName: 'Елена',
+    phone: '+7 900 000-00-00',
+    telegram: 'https://t.me/+XXXXXXXXXXXX'
+  },
+
+  final: { title: 'Ждём вас!', reminder: 'Пожалуйста, ответьте на приглашение' }
+};
+
+/* ---------- Вспомогательное ---------- */
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+const get = path => path.split('.').reduce((o, k) => (o == null ? o : o[k]), CONFIG);
+const safeUrl = u => /^https?:\/\//i.test(String(u || '')) ? u : '';
+
+// Если файла фото ещё нет — показываем заглушку с именем файла
+function setImg(img, src) {
+  img.onerror = () => { const ph = el('div', 'ph', src || 'нет фото'); img.replaceWith(ph); };
+  if (src) img.src = src; else img.onerror();
+}
+
+async function post(data) {
+  const res = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // text/plain — чтобы браузер не слал preflight-запрос
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('http');
+  const json = await res.json();
+  if (!json.ok) { const e = new Error(json.error || 'server'); e.code = json.error; throw e; }
+  return json;
+}
+
+/* ---------- Тексты из CONFIG ---------- */
+document.querySelectorAll('[data-t]').forEach(n => { n.textContent = get(n.dataset.t) ?? ''; });
+// Имена на обложке: буквы появляются по одной
+(() => {
+  const h = document.querySelector('.names'); let i = 0;
+  h.setAttribute('aria-label', `${CONFIG.couple.first} ${CONFIG.couple.and} ${CONFIG.couple.second}`);
+  h.querySelectorAll(':scope > span').forEach(part => {
+    const chars = [...part.textContent]; part.textContent = ''; part.setAttribute('aria-hidden', 'true');
+    chars.forEach(c => { const ch = el('span', 'ch', c); ch.style.setProperty('--i', i++); part.append(ch); });
+  });
+})();
+document.title = `${CONFIG.couple.first} ${CONFIG.couple.and} ${CONFIG.couple.second} — ${CONFIG.dateText}`;
+
+// Обложка: если фото нет, остаётся тёмно-зелёный фон
+$('coverImg').onerror = function () { this.remove(); };
+$('coverImg').src = CONFIG.photos.cover;
+setImg($('coupleImg'), CONFIG.photos.couple);
+
+CONFIG.invitation.text.forEach(t => $('inviteText').append(el('p', '', t)));
+
+CONFIG.program.items.forEach(i => {
+  const li = el('li');
+  li.append(el('time', '', i.time), el('h3', '', i.title), el('p', '', i.text));
+  $('program').append(li);
+});
+
+const { lat, lon } = CONFIG.venue;
+$('map').src = `https://yandex.ru/map-widget/v1/?ll=${lon}%2C${lat}&z=14&pt=${lon}%2C${lat}%2Cpm2gnm`;
+$('routeBtn').href = `https://yandex.ru/maps/?rtext=~${lat}%2C${lon}&rtt=auto`;
+
+CONFIG.dresscode.colors.forEach(c => {
+  const li = el('li'); const dot = el('i'); dot.style.background = c.hex;
+  li.append(dot, el('span', '', c.name)); $('swatches').append(li);
+});
+
+CONFIG.rsvp.mains.forEach(m => { const o = el('option', '', m); o.value = m; $('fMain').append(o); });
+CONFIG.rsvp.drinks.forEach(d => {
+  const l = el('label'); const i = el('input'); i.type = 'checkbox'; i.name = 'drinks'; i.value = d;
+  l.append(i, el('span', '', d)); $('drinks').append(l);
+});
+
+CONFIG.wishes.items.forEach(w => {
+  const d = el('div'); d.append(el('h3', '', w.title), el('p', '', w.text)); $('wishes').append(d);
+});
+
+$('phone').textContent = CONFIG.contacts.phone;
+$('phone').href = 'tel:' + CONFIG.contacts.phone.replace(/[^\d+]/g, '');
+$('tg').href = CONFIG.contacts.telegram;
+
+/* ---------- Музыка (по умолчанию выключена) ---------- */
+const audio = $('music'), musicBtn = $('musicBtn');
+musicBtn.addEventListener('click', async () => {
+  if (audio.paused) {
+    if (!audio.src) audio.src = CONFIG.music;
+    try { await audio.play(); } catch (e) { musicBtn.textContent = '♪ Музыка недоступна'; return; }
+    musicBtn.textContent = '♪ Выключить музыку'; musicBtn.setAttribute('aria-pressed', 'true');
+  } else {
+    audio.pause(); musicBtn.textContent = '♪ Включить музыку'; musicBtn.setAttribute('aria-pressed', 'false');
+  }
+});
+
+/* ---------- Таймер ---------- */
+const target = new Date(CONFIG.date).getTime();
+function setNum(id, val) {            // цифра слегка «перещёлкивается», когда меняется
+  const n = $(id); if (n.textContent === val) return;
+  n.textContent = val; n.classList.remove('tick'); void n.offsetWidth; n.classList.add('tick');
+}
+function tick() {
+  const diff = target - Date.now();
+  if (diff <= 0) { $('timer').hidden = true; $('timerDone').hidden = false; clearInterval(timerId); return; }
+  const s = Math.floor(diff / 1000);
+  setNum('tD', String(Math.floor(s / 86400)));
+  setNum('tH', String(Math.floor(s % 86400 / 3600)).padStart(2, '0'));
+  setNum('tM', String(Math.floor(s % 3600 / 60)).padStart(2, '0'));
+  setNum('tS', String(s % 60).padStart(2, '0'));
+}
+const timerId = setInterval(tick, 1000); tick();
+
+/* ---------- Появление блоков ---------- */
+// Порядковые номера для поочерёдного появления
+document.querySelectorAll('.reveal').forEach(r => [...r.children].forEach((c, n) => c.style.setProperty('--n', n)));
+document.querySelectorAll('.program, .swatches, .wishes, .facts').forEach(list =>
+  [...list.children].forEach((c, i) => c.style.setProperty('--i', i)));
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); e.target.closest('.block')?.classList.add('seen'); io.unobserve(e.target);
+  }), { rootMargin: '0px 0px -14% 0px' });
+  document.querySelectorAll('.reveal').forEach(n => io.observe(n));
+} else {
+  document.querySelectorAll('.reveal').forEach(n => { n.classList.add('in'); n.closest('.block')?.classList.add('seen'); });
+}
+
+/* ---------- Прогресс прокрутки и лёгкий параллакс обложки ---------- */
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const progress = $('progress'), coverPhoto = $('coverPhoto');
+let scrollQueued = false;
+function onScroll() {
+  const y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+  if (!reduceMotion && y < window.innerHeight) coverPhoto.style.transform = `translate3d(0,${(y * 0.22).toFixed(1)}px,0)`;
+  scrollQueued = false;
+}
+window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+/* ---------- Плавающая кнопка «Ответить» ---------- */
+// Видна везде, кроме обложки, самой анкеты и финала (там своя кнопка)
+const fab = $('fab');
+if ('IntersectionObserver' in window) {
+  const visible = new Map();
+  const fo = new IntersectionObserver(entries => {
+    entries.forEach(e => visible.set(e.target, e.isIntersecting));
+    fab.classList.toggle('show', !fab.dataset.off && ![...visible.values()].some(Boolean));
+  });
+  [document.querySelector('.cover'), $('rsvp'), document.querySelector('.final')].forEach(n => fo.observe(n));
+}
+
+/* ---------- Календарь месяца с обведённой датой ---------- */
+(() => {
+  const [y, m, d] = CONFIG.date.slice(0, 10).split('-').map(Number);
+  const months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  const box = $('calendar');
+  $('calMonth').textContent = `${months[m - 1]} ${y}`;
+  box.setAttribute('aria-label', CONFIG.dateText);
+  ['пн','вт','ср','чт','пт','сб','вс'].forEach(w => box.append(el('span', 'wd', w)));
+  const offset = (new Date(y, m - 1, 1).getDay() + 6) % 7, days = new Date(y, m, 0).getDate();
+  for (let i = 0; i < offset; i++) box.append(el('span'));
+  for (let n = 1; n <= days; n++) {
+    const cell = el('span', n === d ? 'day the' : 'day', n);
+    if (n === d) cell.insertAdjacentHTML('beforeend',
+      '<svg class="draw" viewBox="0 0 100 100" aria-hidden="true"><path pathLength="1" d="M52 9 C80 7 94 28 92 52 C90 78 68 94 46 92 C22 90 6 70 9 46 C12 24 30 8 60 11"/></svg>');
+    box.append(cell);
+  }
+})();
+
+/* ---------- Кнопка «Добавить в календарь» (файл .ics) ---------- */
+$('icsBtn').addEventListener('click', () => {
+  const stamp = t => new Date(t).toISOString().replace(/[-:]|\.\d{3}/g, '');
+  const esc = v => String(v).replace(/([,;\\])/g, '\\$1');
+  const start = new Date(CONFIG.date).getTime();
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//wedding-site//RU', 'BEGIN:VEVENT',
+    'UID:' + start + '@wedding-site', 'DTSTAMP:' + stamp(Date.now()),
+    'DTSTART:' + stamp(start), 'DTEND:' + stamp(start + 7 * 3600e3),
+    'SUMMARY:' + esc(`Свадьба: ${CONFIG.couple.first} ${CONFIG.couple.and} ${CONFIG.couple.second}`),
+    'LOCATION:' + esc(`${CONFIG.venue.name}, ${CONFIG.venue.address}`),
+    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+  const a = el('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+  a.download = 'wedding.ics'; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+});
+
+/* ---------- Анкета ---------- */
+const form = $('rsvpForm'), rsvpStatus = $('rsvpStatus');
+const attending = () => form.querySelector('input[name=attending]:checked')?.value || '';
+
+function syncForm() {
+  $('ifComing').hidden = attending() !== 'Да';
+  $('companionsField').hidden = !(Number($('fGuests').value) > 1);
+}
+form.addEventListener('change', syncForm);
+$('fGuests').addEventListener('input', syncForm);
+
+function validate() {
+  let first = null;
+  const fail = (errId, msg, focusEl) => {
+    $(errId).textContent = msg;
+    if (focusEl.setAttribute) focusEl.setAttribute('aria-invalid', 'true');
+    if (!first) first = focusEl;
+  };
+  form.querySelectorAll('.err').forEach(n => n.textContent = '');
+  form.querySelectorAll('[aria-invalid]').forEach(n => n.removeAttribute('aria-invalid'));
+
+  if ($('fName').value.trim().length < 2) fail('eName', 'Напишите имя и фамилию.', $('fName'));
+  if (!attending()) fail('eAttending', 'Отметьте, придёте ли вы.', form.querySelector('input[name=attending]'));
+
+  if (attending() === 'Да') {
+    const n = Number($('fGuests').value);
+    if (!Number.isInteger(n) || n < 1 || n > 6) fail('eGuests', 'Укажите число от 1 до 6.', $('fGuests'));
+    else if (n > 1 && !$('fCompanions').value.trim()) fail('eCompanions', 'Напишите имена тех, кто придёт с вами.', $('fCompanions'));
+    if (!$('fMain').value) fail('eMain', 'Выберите горячее.', $('fMain'));
+    if (!form.querySelector('input[name=transfer]:checked')) fail('eTransfer', 'Отметьте, нужен ли трансфер.', form.querySelector('input[name=transfer]'));
+  }
+  if (first) first.focus();
+  return !first;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  rsvpStatus.className = 'status';
+  if (!validate()) return;
+
+  const coming = attending() === 'Да';
+  const data = {
+    action: 'rsvp',
+    name: $('fName').value.trim(),
+    attending: attending(),
+    guests: coming ? Number($('fGuests').value) : 0,
+    companions: coming && Number($('fGuests').value) > 1 ? $('fCompanions').value.trim() : '',
+    main: coming ? $('fMain').value : '',
+    drinks: coming ? [...form.querySelectorAll('input[name=drinks]:checked')].map(i => i.value).join(', ') : '',
+    allergies: coming ? $('fAllergies').value.trim() : '',
+    transfer: coming ? form.querySelector('input[name=transfer]:checked').value : '',
+    comment: $('fComment').value.trim()
+  };
+
+  if (!SCRIPT_URL) {
+    rsvpStatus.className = 'status bad';
+    rsvpStatus.textContent = 'Таблица ещё не подключена, ответ не сохранён. Вставьте URL веб-приложения в константу SCRIPT_URL.';
+    return;
+  }
+
+  const btn = $('rsvpSubmit');
+  btn.disabled = true; btn.textContent = 'Отправляем…';
+  try {
+    await post(data);
+    form.reset(); syncForm();
+    rsvpStatus.className = 'status ok';
+    rsvpStatus.innerHTML = '<svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M4 12.5l5 5L20 6.5"/></svg><span>Спасибо, ответ получен</span>';
+    fab.dataset.off = '1'; fab.classList.remove('show');
+  } catch (err) {
+    // Форму не очищаем — гость может просто нажать кнопку ещё раз
+    rsvpStatus.className = 'status bad';
+    rsvpStatus.textContent = 'Ответ не отправился. Проверьте интернет и нажмите «Отправить ответ» ещё раз — всё, что вы ввели, сохранилось. Если не получится, напишите организатору.';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Отправить ответ';
+  }
+});
+
+/* ---------- Вишлист ---------- */
+const giftsBox = $('gifts'), giftsStatus = $('giftsStatus');
+const fmtPrice = p => (typeof p === 'number' || /^\d+$/.test(String(p))) ? Number(p).toLocaleString('ru-RU') + ' ₽' : String(p || '');
+
+function markTaken(card) {
+  card.classList.add('taken');
+  const actions = card.querySelector('.actions');
+  actions.replaceChildren(el('span', 'taken-note', 'Уже забронирован'));
+}
+
+function giftCard(g) {
+  const card = el('article', 'gift');
+  const pic = el('div', 'pic'); const img = el('img'); img.loading = 'lazy'; img.alt = g.title; pic.append(img);
+  setImg(img, g.photo);
+
+  const body = el('div', 'body');
+  body.append(el('h3', '', g.title), el('div', 'price', fmtPrice(g.price)));
+  const actions = el('div', 'actions');
+
+  if (safeUrl(g.link)) {
+    const a = el('a', '', 'Посмотреть в магазине'); a.href = g.link; a.target = '_blank'; a.rel = 'noopener';
+    body.append(a);
+  }
+  body.append(actions); card.append(pic, body);
+
+  if (g.taken) { markTaken(card); return card; }
+
+  const openBtn = el('button', 'btn ghost', 'Забронировать'); openBtn.type = 'button';
+  actions.append(openBtn);
+
+  openBtn.addEventListener('click', () => {
+    const f = el('form'); f.noValidate = true; f.style.display = 'grid'; f.style.gap = '.6rem';
+    const inputId = 'giftName' + g.id;
+    const lab = el('label', '', 'Ваше имя'); lab.htmlFor = inputId; lab.style.margin = '0';
+    const inp = el('input'); inp.type = 'text'; inp.id = inputId; inp.autocomplete = 'name';
+    const msg = el('div', 'err'); msg.setAttribute('role', 'alert');
+    const ok = el('button', 'btn', 'Подтвердить бронь'); ok.type = 'submit';
+    f.append(lab, inp, msg, ok);
+    actions.replaceChildren(f); inp.focus();
+
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name = inp.value.trim();
+      if (name.length < 2) { msg.textContent = 'Напишите имя, чтобы пара знала, от кого подарок.'; inp.focus(); return; }
+      if (!SCRIPT_URL) { markTaken(card); return; } // демо-режим
+      ok.disabled = true; ok.textContent = 'Бронируем…'; msg.textContent = '';
+      try {
+        await post({ action: 'reserve', id: g.id, title: g.title, name });
+        markTaken(card);
+      } catch (err) {
+        if (err.code === 'taken') { markTaken(card); card.querySelector('.taken-note').textContent = 'Этот подарок только что забронировал другой гость'; }
+        else { msg.textContent = 'Бронь не сохранилась. Проверьте интернет и нажмите ещё раз.'; ok.disabled = false; ok.textContent = 'Подтвердить бронь'; }
+      }
+    });
+  });
+  return card;
+}
+
+async function loadGifts() {
+  let gifts;
+  if (!SCRIPT_URL) {
+    gifts = CONFIG.demoGifts;
+  } else {
+    giftsStatus.className = 'status ok'; giftsStatus.textContent = 'Загружаем список подарков…';
+    try {
+      const res = await fetch(SCRIPT_URL);
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error);
+      gifts = json.gifts;
+      giftsStatus.className = 'status';
+    } catch (err) {
+      giftsStatus.className = 'status bad';
+      giftsStatus.textContent = 'Список подарков не загрузился. Обновите страницу чуть позже.';
+      return;
+    }
+  }
+  if (!gifts.length) { giftsStatus.className = 'status ok'; giftsStatus.textContent = 'Список подарков скоро появится.'; return; }
+  giftsBox.replaceChildren(...gifts.map(giftCard));
+}
+loadGifts();
+</script>
+</body>
+</html>
