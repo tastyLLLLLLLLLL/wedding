@@ -463,6 +463,7 @@ const CONFIG = {
 
   photos: {
     cover: 'images/cover.jpg',             // обложка, вертикальное или горизонтальное фото
+    coverFocus: '50% 10%',                 // какая часть обложки остаётся в кадре на широких экранах: по горизонтали и по вертикали (0% — верх фото)
     couple: 'images/couple.jpg'            // фото в финале, вертикальное 3:4
   },
   music: 'audio/music.mp3',
@@ -587,6 +588,7 @@ document.title = `${CONFIG.couple.first} ${CONFIG.couple.and} ${CONFIG.couple.se
 
 // Обложка: если фото нет, остаётся тёмно-зелёный фон
 $('coverImg').onerror = function () { this.remove(); };
+$('coverImg').style.objectPosition = CONFIG.photos.coverFocus || '50% 50%';
 $('coverImg').src = CONFIG.photos.cover;
 setImg($('coupleImg'), CONFIG.photos.couple);
 
